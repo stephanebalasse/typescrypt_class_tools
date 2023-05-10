@@ -1,0 +1,1 @@
+rootProject.name = "Typescript_Class_Tools"

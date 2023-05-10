@@ -1,0 +1,6 @@
+export class QueryString {
+  public items?: string[] = ['item One', 'item two']
+  constructor(public logicalOperator: string ) {
+    this.logicalOperator = logicalOperator;
+  }
+}

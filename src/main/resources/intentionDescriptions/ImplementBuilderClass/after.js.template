@@ -1,0 +1,22 @@
+import {QueryString} from "./query-string";
+
+export class QueryStringBuilder {
+  private _logicalOperator!: string;
+  private _items?: string[];
+
+  withLogicalOperator(value: string): QueryStringBuilder {
+    this._logicalOperator = value;
+    return this;
+  }
+
+  withItems(value: string[]): QueryStringBuilder {
+    this._items = value;
+    return this;
+  }
+
+  build(): QueryString {
+    const querystring = new QueryString(this._logicalOperator,);
+    querystring.items = this._items ?? ['item One', 'item two'];
+    return querystring;
+  }
+}

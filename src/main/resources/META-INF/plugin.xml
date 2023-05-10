@@ -1,0 +1,40 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>fr.devcafeine.Typescript_Class_Tools</id>
+    <name>Typescript Class Tools</name>
+    <vendor email="stephane.balasse@devcafeine.fr">Devcafeine</vendor>
+    <description><![CDATA[
+        <p>Added new functionality for Typescript classes or Interface or Type</p>
+        <br/>
+        <br/>
+        <p>Feature</p>
+        <ul>
+            <li>Possibility to create a Builder Pattern from Class, Interface or Type from Context Action Menu</li>
+            <li>Possibility to create a Class, Interface or Type from new menu </li>
+        </ul>
+        <br/>
+  ]]></description>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>JavaScript</depends>
+    <actions>
+        <action id="NewTypeScriptClassFile" class="fr.devcafeine.typescript_class_tools.CreateTypescriptClassFileAction">
+            <add-to-group group-id="NewWebDevelopment" anchor="after" relative-to-action="NewTypeScriptFile" />
+        </action>
+    </actions>
+    <extensions defaultExtensionNs="com.intellij">
+        <internalFileTemplate name="TypeScript Class File"/>
+        <internalFileTemplate name="TypeScript Interface File"/>
+        <internalFileTemplate name="TypeScript Type File"/>
+        <createFromTemplateHandler
+                implementation="fr.devcafeine.typescript_class_tools.fileTemplates.TypescriptCreateFromTemplateHandler"
+                id="ts"
+                order="first"/>
+        <intentionAction>
+            <language>TypeScript</language>
+            <className>fr.devcafeine.typescript_class_tools.ImplementBuilderClass</className>
+            <category>TypeScript</category>
+        </intentionAction>
+    </extensions>
+</idea-plugin>
